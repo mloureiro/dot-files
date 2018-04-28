@@ -1,0 +1,20 @@
+{
+  "editor.codeLens": false,
+  "editor.fontFamily": "Fira Code, Menlo, Monaco",
+  "editor.fontLigatures": true,
+  "editor.insertSpaces": true,
+  "editor.parameterHints": false,
+  "editor.quickSuggestions": true,
+  "editor.renderWhitespace": "all",
+  "editor.snippetSuggestions": "none",
+  "editor.tabSize": 2,
+  "files.autoSave": "onWindowChange",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "javascript.validate.enable": false,
+  "typescript.disableAutomaticTypeAcquisition": true,
+  "typescript.validate.enable": false,
+  "window.zoomLevel": 0,
+  "workbench.iconTheme": "vs-seti",
+  "vsicons.dontShowNewVersionMessage": true
+}

@@ -1,0 +1,39 @@
+*~
+**.local
+.DS_Store
+important.txt
+
+.vagrant
+
+.idea
+.tmp
+.vscode
+
+### Laravel || Lumen
+lumen-ide-helper.php
+lumen_ide_helper.php
+
+### specifc for the dutch app
+website3/web/assets/js/*.js
+website3/web/assets/js/vendor/*.js
+website3/web/assets/**/*.css
+website3/web/assets/**/*.min_*
+website3/web/assets/**/*.min.js
+
+### specific for CT services
+.php_cs.cache
+
+### specific WS.com
+/curl-bo
+/output.*
+**_local.yml
+*min.js
+*min_*.js
+website/web/node_modules
+
+### specific for Mobile
+#android/local.poperties
+ios/Werkspot.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+
+cron_log.txt
+no-vcs/

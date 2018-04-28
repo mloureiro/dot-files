@@ -1,0 +1,91 @@
+
+#####################
+export ZSH=~/.oh-my-zsh
+#ZSH_THEME=apple
+ZSH_THEME=af-magic
+COMPLETION_WAITING_DOTS=true
+plugins=(
+  git
+  composer
+  common-aliases
+  encode64
+  osx
+  urltools
+  vagrant
+  wd
+  docker
+)
+source $ZSH/oh-my-zsh.sh
+###
+# key binding
+bindkey "\e\e[D" backward-word
+bindkey "\e\e[C" forward-word
+#####################
+
+### ENV Variables ###
+export ANDROID_HOME=~/Library/Android/sdk
+
+function join_by { local IFS="$1"; shift; echo "$*"; }
+
+### PATHS ###
+PATHS=(
+  .:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin # Default
+  ./vendor/bin # PHP Composer
+  ./node_modules/.bin # JS NPM
+  $HOME/.fastlane/bin # Fastlane
+  ~/source/my/flutter # Dart Flutter
+  ~/.pub-cache/bin # Dart Pub
+  $ANDROID_HOME/platform-tools # Android platform Tools
+  $ANDROID_HOME/tools # Android Tools
+  $ANDROID_HOME/tools/bin # Android Tools
+)
+
+export PATH=$(join_by : ${PATHS[*]})
+
+### docker ###
+alias d="docker"
+alias dr="docker run"
+alias ds="docker stop"
+alias de="docker exec"
+alias deit="docker exec -it"
+#docker-goto-sh() {docker exec -it $1 bash}
+#alias dsh="docker-goto-sh()"
+alias db="docker build"
+alias di="docker images"
+alias dp="docker ps"
+alias dpa="docker ps -a"
+alias drm="docker rm"
+alias drmi="docker rmi"
+# docker-compose
+alias dc="docker-compose"
+##############
+###   git  ###
+alias gfx="git-fixup"
+alias gfxa="git-fixup-all"
+
+
+alias start-docker='bash -c "clear && DOCKER_HOST=tcp://192.168.99.100:2376 DOCKER_CERT_PATH=~/.docker/machine/machines/default DOCKER_TLS_VERIFY=1 /bin/zsh"'
+alias gbclean="git branch --merged master | grep -v \"\* master\" | xargs -n 1 git branch -d"
+
+alias system-cache-clear="\
+  sudo kextcache -system-prelinked-kernel && \
+  sudo kextcache -system-caches"
+
+alias tf="tail -f $1 | sed 's/\\\n/^M^F/g'" ## ^M=[crtl+V ctrl+M] ^L=[crtl+V ctrl+L]
+alias vboxshutdown="VBoxManage controlvm default poweroff"
+
+alias vagrant-reload-force="sudo ls >> /dev/null; vagrant halt -f; vagrant up && vagrant ssh"
+
+
+
+### Remove Bracket paste mode ###
+# @see https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard/issues/31
+printf '\e[?2004l'
+#printf '\e[?2004h'
+
+# tabtab source for electron-forge package
+# uninstall by removing these lines or running `tabtab uninstall electron-forge`
+[[ -f /usr/local/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /usr/local/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

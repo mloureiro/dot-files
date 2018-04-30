@@ -1,4 +1,3 @@
-
 #####################
 export ZSH=~/.oh-my-zsh
 #ZSH_THEME=apple
@@ -35,6 +34,7 @@ PATHS=(
   $HOME/.fastlane/bin # Fastlane
   ~/source/my/flutter # Dart Flutter
   ~/.pub-cache/bin # Dart Pub
+  $HOME/.cargo/bin # Rust cargo
   $ANDROID_HOME/platform-tools # Android platform Tools
   $ANDROID_HOME/tools # Android Tools
   $ANDROID_HOME/tools/bin # Android Tools
@@ -63,7 +63,6 @@ alias dc="docker-compose"
 alias gfx="git-fixup"
 alias gfxa="git-fixup-all"
 
-
 alias start-docker='bash -c "clear && DOCKER_HOST=tcp://192.168.99.100:2376 DOCKER_CERT_PATH=~/.docker/machine/machines/default DOCKER_TLS_VERIFY=1 /bin/zsh"'
 alias gbclean="git branch --merged master | grep -v \"\* master\" | xargs -n 1 git branch -d"
 
@@ -76,8 +75,6 @@ alias vboxshutdown="VBoxManage controlvm default poweroff"
 
 alias vagrant-reload-force="sudo ls >> /dev/null; vagrant halt -f; vagrant up && vagrant ssh"
 
-
-
 ### Remove Bracket paste mode ###
 # @see https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard/issues/31
 printf '\e[?2004l'
@@ -88,4 +85,12 @@ printf '\e[?2004l'
 [[ -f /usr/local/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /usr/local/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 export PATH="$PATH:$HOME/.rvm/bin"
+
+# Set environment as UTF
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+# Set TTY for GPG (signing git commits)
+export GPG_TTY=$(tty)

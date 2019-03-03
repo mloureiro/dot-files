@@ -11,10 +11,11 @@
   "files.autoSave": "onWindowChange",
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
-  "javascript.validate.enable": false,
+  "javascript.validate.enable": true,
   "typescript.disableAutomaticTypeAcquisition": true,
   "typescript.validate.enable": false,
   "window.zoomLevel": 0,
   "workbench.iconTheme": "vs-seti",
-  "vsicons.dontShowNewVersionMessage": true
+  "vsicons.dontShowNewVersionMessage": true,
+  "extensions.ignoreRecommendations": false
 }

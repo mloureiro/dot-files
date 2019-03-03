@@ -1,21 +1,22 @@
 [user]
 	name = Marcos Loureiro
 	email = mloureiro.dev@gmail.com
-	signingkey = 23906BC22F424B23
 [credential]
 	helper = osxkeychain
 [core]
 	excludesfile = /Users/ml/.gitignore_global
+	ignorecase = false
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
-#[commit]
-#	gpgsign = true
+	path =
 [gpg]
 	program = gpg
 [commit]
-	gpgsign = false
 	template = /Users/ml/.stCommitMsg
+	gpgsign = true
+	signoff = true
+[alias]
+	fixup = "!f() { TARGET=$(git rev-parse "$1"); git commit --fixup=$TARGET ${@:2} && EDITOR=true git rebase -i --autostash --autosquash $TARGET^; }; f"
+[pager]
+	diff = diff-so-fancy | less --tabs=1,5 -RFX
+	show = diff-so-fancy | less --tabs=1,5 -RFX

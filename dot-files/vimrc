@@ -4,6 +4,5 @@ set expandtab
 set softtabstop=4
 set autoread
 set ruler
-set spell spelllang=en_gb
 
 au BufNewFile,BufRead COMMIT_EDITMSG set tw=72

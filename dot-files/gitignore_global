@@ -34,6 +34,10 @@ website/web/node_modules
 ### specific for Mobile
 #android/local.poperties
 ios/Werkspot.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+graphql.config.json
 
 cron_log.txt
 no-vcs/
+
+# Python
+venv/

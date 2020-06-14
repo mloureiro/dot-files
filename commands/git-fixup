@@ -38,6 +38,7 @@ if [[ ! -e "${PATHNAME}" ]]; then
   exit 2
 fi
 
+echo "File: ${PATHNAME}"
 while read line; do
   echo "${HASH_INDEX}: $(cut -d ' ' -f 2,3- <<< "${line}")"
   HASH_LIST[HASH_INDEX]=$(cut -d ' ' -f 1 <<< "${line}")
@@ -45,11 +46,11 @@ while read line; do
 done < <(git log origin/HEAD...HEAD --format="%H %h %s" "${PATHNAME}")
 
 echo
-while [[ -z "${HASH_LIST[HASH_CHOSEN]}" ]]; do
-  echo -n "Which commit would you like to fixup? "
-  read HASH_CHOSEN
-done
-
-echo
-set -x
-git commit --fixup="${HASH_LIST[HASH_CHOSEN]}" "${PATHNAME}"
+#while [[ -z "${HASH_LIST[HASH_CHOSEN]}" ]]; do
+#  echo -n "Which commit would you like to fixup? "
+#  read HASH_CHOSEN
+#done
+#
+#echo
+#set -x
+#git commit --fixup="${HASH_LIST[HASH_CHOSEN]}" "${PATHNAME}"

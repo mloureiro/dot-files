@@ -1,9 +1,13 @@
 #####################
 export ZSH=~/.oh-my-zsh
-#ZSH_THEME=apple
-ZSH_THEME=af-magic
+ZSH_THEME=apple
+#ZSH_THEME=af-magic
+#ZSH_THEME=robbyrussell
 COMPLETION_WAITING_DOTS=true
-plugins=( git common-aliases )
+plugins=(
+  git
+  common-aliases
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -115,3 +119,32 @@ export LANG=en_US.UTF-8
 export GPG_TTY=$(tty)
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+function kubectl-open-backend() {
+  USAGE="  usage: $0 <namespace> <locale>"
+  NAMESPACE="$1"
+  LOCALE="$2"
+
+  if [[ -z "$NAMESPACE" ]] || [[ -z "$LOCALE" ]]; then
+    echo "Incorrect usage."
+    echo "$USAGE"
+    return 1
+  fi
+
+  case "$LOCALE" in
+    "fr" ) PROJECT="travaux-com"  ;;
+    "it" ) PROJECT="instapro-it"  ;;
+    "nl" ) PROJECT="werkspot-nl"  ;;
+    "en" | * )
+      PROJECT="werkspot-com" ;;
+  esac
+
+  POD=$(kubectl get pods --namespace "$NAMESPACE" | grep "$PROJECT" | grep backend | awk "{ print(\$1) }")
+  if [[ -z "$POD" ]];  then
+    echo "Backend pod for $NAMESPACE not found"
+    echo $USAGE
+    return 1
+  fi
+
+  kubectl exec -ti --namespace "$NAMESPACE" --context instapro.staging -c "$PROJECT"-php-backend "$POD" /bin/bash
+}

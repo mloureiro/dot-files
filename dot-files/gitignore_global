@@ -1,13 +1,19 @@
 *~
-**.local
+*.local
 .DS_Store
 important.txt
 
 .vagrant
 
-.idea
 .tmp
+
+### JetBrains ###
+.idea
+.graphqlconfig
+
+### VS Code
 .vscode
+.history
 
 ### Laravel || Lumen
 lumen-ide-helper.php
@@ -30,14 +36,22 @@ website3/web/assets/**/*.min.js
 *min.js
 *min_*.js
 website/web/node_modules
+src/UserInterface/Console/TestCommand.php
 
 ### specific for Mobile
 #android/local.poperties
 ios/Werkspot.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
 graphql.config.json
+graphql.schema.json
 
 cron_log.txt
 no-vcs/
 
 # Python
 venv/
+
+# Servers
+.now/
+
+# NPM
+.npmrc

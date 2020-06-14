@@ -20,6 +20,7 @@ export ANDROID_SDK_ROOT=$ANDROID_HOME
 
 function join_by { local IFS="$1"; shift; echo "$*"; }
 
+#############
 ### PATHS ###
 PATHS=(
   . # here and now
@@ -39,6 +40,7 @@ PATHS=(
   /usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin # Default
 )
 
+export ZSH_DISABLE_COMPFIX=true # issue: https://github.com/ohmyzsh/ohmyzsh/issues/6835 
 export PATH=$(join_by : ${PATHS[*]})
 
 ### NVM - Node VM ###

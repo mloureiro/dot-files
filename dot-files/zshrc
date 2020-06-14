@@ -15,14 +15,14 @@ bindkey "\e\e[C" forward-word
 
 ### ENV Variables ###
 # export ANDROID_HOME=/usr/local/Caskroom/android-sdk/3859397/
-export ANDROID_HOME=/Users/ml/Library/Android/sdk/
+export ANDROID_HOME=/Users/ml/Library/Android/sdk
 export ANDROID_SDK_ROOT=$ANDROID_HOME
 
 function join_by { local IFS="$1"; shift; echo "$*"; }
 
 ### PATHS ###
 PATHS=(
-  .:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin # Default
+  . # here and now
   ./vendor/bin # PHP Composer
   ./node_modules/.bin # JS NPM
   $HOME/.fastlane/bin # Fastlane
@@ -31,6 +31,12 @@ PATHS=(
   $ANDROID_HOME/platform-tools # Android platform Tools
   $ANDROID_HOME/tools # Android Tools
   $ANDROID_HOME/tools/bin # Android Tools
+  /usr/local/opt/ruby/bin # ruby
+  /usr/local/lib/ruby/gems/2.7.0/bin/  ## WORK AROUND FOR pod
+  $HOME/.jenv/shims # Java JENV
+
+  # Default
+  /usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin # Default
 )
 
 export PATH=$(join_by : ${PATHS[*]})

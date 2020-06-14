@@ -46,24 +46,37 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-### docker ###
-alias d="docker"
-alias dr="docker run"
-alias ds="docker stop"
-alias de="docker exec"
-alias deit="docker exec -it"
-#docker-goto-sh() {docker exec -it $1 bash}
-#alias dsh="docker-goto-sh()"
-alias db="docker build"
-alias di="docker images"
-alias dp="docker ps"
-alias dpa="docker ps -a"
-alias drm="docker rm"
-alias drmi="docker rmi"
-# docker-compose
-alias dc="docker-compose"
 ##############
-###   git  ###
+### Docker ###
+alias d=docker
+alias db='docker build'
+alias de='docker exec'
+alias deit='docker exec -it'
+alias di='docker images'
+alias dp='docker ps'
+alias dpa='docker ps -a'
+alias dr='docker run'
+alias drm='docker rm'
+alias drmi='docker rmi'
+alias ds='docker stop'
+alias dc=docker-compose
+alias dcb='docker-compose build'
+alias dcdn='docker-compose down'
+alias dce='docker-compose exec'
+alias dcl='docker-compose logs'
+alias dclf='docker-compose logs -f'
+alias dcps='docker-compose ps'
+alias dcpull='docker-compose pull'
+alias dcr='docker-compose run'
+alias dcrestart='docker-compose restart'
+alias dcrm='docker-compose rm'
+alias dcstart='docker-compose start'
+alias dcstop='docker-compose stop'
+alias dcup='docker-compose up'
+alias dcupd='docker-compose up -d'
+
+##############
+###  git   ###
 alias gfx="git-fixup"
 alias gfxa="git-fixup-all"
 alias gc='git commit -s'

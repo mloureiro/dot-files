@@ -3,7 +3,7 @@ export ZSH=~/.oh-my-zsh
 #ZSH_THEME=apple
 ZSH_THEME=af-magic
 COMPLETION_WAITING_DOTS=true
-plugins=( git common-aliases )
+plugins=( git common-aliases deno )
 
 source $ZSH/oh-my-zsh.sh
 
@@ -13,15 +13,13 @@ bindkey "\e\e[D" backward-word
 bindkey "\e\e[C" forward-word
 #####################
 
-### ENV Variables ###
+####
+# Paths
 # export ANDROID_HOME=/usr/local/Caskroom/android-sdk/3859397/
 export ANDROID_HOME=/Users/ml/Library/Android/sdk
 export ANDROID_SDK_ROOT=$ANDROID_HOME
 
 function join_by { local IFS="$1"; shift; echo "$*"; }
-
-#############
-### PATHS ###
 PATHS=(
   . # here and now
   ./vendor/bin # PHP Composer
@@ -41,14 +39,18 @@ PATHS=(
 )
 
 export PATH=$(join_by : ${PATHS[*]})
+#####################
 
-### NVM - Node VM ###
+###
+# NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+#####################
 
-##############
-### Docker ###
+###
+# Docker alias
+alias start-docker='bash -c "clear && DOCKER_HOST=tcp://192.168.99.100:2376 DOCKER_CERT_PATH=~/.docker/machine/machines/default DOCKER_TLS_VERIFY=1 /bin/zsh"'
 alias d=docker
 alias db='docker build'
 alias de='docker exec'
@@ -75,33 +77,35 @@ alias dcstart='docker-compose start'
 alias dcstop='docker-compose stop'
 alias dcup='docker-compose up'
 alias dcupd='docker-compose up -d'
+#####################
 
-##############
-###  git   ###
+###
+# git alias
 alias gfx="git-fixup"
 alias gfxa="git-fixup-all"
 alias gc='git commit -s'
 alias gca='git commit -sa'
 alias gcam='git commit -sam'
-
-alias start-docker='bash -c "clear && DOCKER_HOST=tcp://192.168.99.100:2376 DOCKER_CERT_PATH=~/.docker/machine/machines/default DOCKER_TLS_VERIFY=1 /bin/zsh"'
 alias gbclean="git branch --merged master | grep -v \"\* master\" | xargs -n 1 git branch -d"
+#####################
 
-# ReactNative
+###
+# ReactNative alias
 alias shake='adb shell input keyevent 82'
 alias android-log='adb logcat *:S AndroidRuntime:E ReactNative:V ReactNativeJS:V'
 alias android-reload='adb shell input keyevent 46 & adb shell input keyevent 46'
+#####################
 
+###
+# Other alias
 alias system-cache-clear="\
   sudo kextcache -system-prelinked-kernel && \
   sudo kextcache -system-caches"
-
 alias tf="tail -f $1 | sed 's/\\\n/^M^F/g'" ## ^M=[crtl+V ctrl+M] ^L=[crtl+V ctrl+L]
 alias vboxshutdown="VBoxManage controlvm default poweroff"
-
 alias vagrant-reload-force="sudo ls >> /dev/null; vagrant halt -f; vagrant up && vagrant ssh"
-
 alias cat=bat
+#####################
 
 ### Remove Bracket paste mode ###
 # @see https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard/issues/31
